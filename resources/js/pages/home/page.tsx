@@ -5,6 +5,7 @@ import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 
 export default function Home() {
+    const currentYear = new Date().getFullYear();
 
     return (
         <>
@@ -12,7 +13,7 @@ export default function Home() {
 
             <HomeNavigation />
 
-            <main className='w-full'>
+            <main className=' w-full min-h-dvh'>
 
                 <div className='flex flex-wrap sm:px-5 items-center'>
                     <div className='md:w-[50%] w-full'>
@@ -32,7 +33,12 @@ export default function Home() {
                         </div>
 
                     </div>
+
+                    <div className='text-center self-end'>
+                        <p>All rights reserved - {currentYear}</p>
+                    </div>
                 </div>
+
 
 
             </main>
