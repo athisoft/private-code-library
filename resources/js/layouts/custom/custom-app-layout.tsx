@@ -25,7 +25,7 @@ function CustomAppLayout({
 
             </main>
 
-            <footer className='text-center py-2 justify-self-end bg-green-950 text-white'>
+            <footer className='text-center py-2 justify-self-end bg-green-950 text-white sm:px-0 px-3'>
                 <p>© {currentYear}
                     <a className='font-semibold' href={`https://www.athisoft.in`} target='_blank' rel='noopener noreferrer'> Athisoft</a>. All rights reserved. Crafted with care and code.</p>
             </footer>

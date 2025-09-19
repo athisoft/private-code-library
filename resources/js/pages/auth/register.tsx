@@ -15,7 +15,7 @@ export default function Register() {
         <CustomAppLayout>
             <Head title="Register" />
             <section className='flex flex-col'>
-                <div className='max-w-[400px] w-full self-center'>
+                <div className='max-w-[400px] w-full self-center sm:px-0 px-3'>
 
                     <div className="space-y-2 text-center mb-3">
                         <h1 className="text-xl font-medium">Create an account</h1>
