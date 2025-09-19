@@ -1,4 +1,7 @@
+import { login, register } from '@/routes'
+import { Link } from '@inertiajs/react'
 import React from 'react'
+
 
 function HomeNavigation() {
     return (
@@ -11,10 +14,10 @@ function HomeNavigation() {
 
             <ul className='flex gap-1'>
                 <li className='px-2 py-1.5 hover:bg-green-900 rounded-xs text-white font-bold'>
-                    <button className='cursor-pointer'>Login</button>
+                    <Link href={login()} className='cursor-pointer'>Login</Link>
                 </li>
                 <li className='px-2 py-1.5 hover:bg-green-900 rounded-xs text-white font-bold'>
-                    <button className='cursor-pointer'>Register</button>
+                    <Link href={register()} className='cursor-pointer'>Register</Link>
                 </li>
             </ul>
         </nav>
