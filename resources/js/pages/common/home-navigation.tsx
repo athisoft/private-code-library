@@ -1,24 +1,46 @@
-import { login, register } from '@/routes'
-import { Link } from '@inertiajs/react'
+import { login, register, home, dashboard } from '@/routes'
+import { Link, usePage } from '@inertiajs/react'
 import React from 'react'
 
+type props = {
+    isLoggedin: boolean;
+}
 
-function HomeNavigation() {
+function HomeNavigation({ isLoggedin }: props) {
+    const { url } = usePage()
+
+    console.log(isLoggedin)
+
     return (
-        <nav className='flex flex-wrap py-1 min-w-dvw bg-green-700 justify-around'>
-            <ul className='flex gap-2'>
-                <li className='px-2 py-1.5 bg-green-800 hover:bg-green-900 text-white font-bold rounded-xs'>Home</li>
-                <li className='px-2 py-1.5 hover:bg-green-900 text-white font-bold rounded-xs'>Services</li>
-                <li className='px-2 py-1.5 hover:bg-green-900 text-white font-bold rounded-xs'>About us</li>
+        <nav className='flex flex-wrap py-0.5 min-w-dvw bg-green-700 justify-around'>
+            <ul className='flex flex-wrap gap-2'>
+                <li className={`hover:bg-green-900 text-white font-semibold rounded-xs ${url == '/' ? 'bg-green-800' : ''}`}>
+                    <Link href={home()} className='cursor-pointer inline-block px-2 py-1.5'>Home</Link></li>
+                <li className={`hover:bg-green-900 text-white font-semibold rounded-xs ${url.startsWith('/services') ? 'bg-green-800' : ''}`}>
+                    <Link href={"#"} className='cursor-pointer inline-block px-2 py-1.5'>Services</Link></li>
+                <li className={`hover:bg-green-900 text-white font-semibold rounded-xs ${url.startsWith('/about-us') ? 'bg-green-800' : ''}`}>
+                    <Link href={"#"} className='cursor-pointer inline-block px-2 py-1.5'>About us</Link></li>
             </ul>
 
             <ul className='flex gap-1'>
-                <li className='px-2 py-1.5 hover:bg-green-900 rounded-xs text-white font-bold'>
-                    <Link href={login()} className='cursor-pointer'>Login</Link>
-                </li>
-                <li className='px-2 py-1.5 hover:bg-green-900 rounded-xs text-white font-bold'>
-                    <Link href={register()} className='cursor-pointer'>Register</Link>
-                </li>
+                {!isLoggedin && (
+                    <>
+                        <li className={`hover:bg-green-900 text-white font-semibold rounded-xs ${url.startsWith('/login') ? 'bg-green-800' : ''}`}>
+                            <Link href={login()} className='cursor-pointer inline-block px-2 py-1.5'>Login</Link>
+                        </li>
+                        <li className={`hover:bg-green-900 text-white font-semibold rounded-xs ${url.startsWith('/register') ? 'bg-green-800' : ''}`}>
+                            <Link href={register()} className='cursor-pointer inline-block px-2 py-1.5'>Register</Link>
+                        </li>
+                    </>
+                )}
+
+                {isLoggedin && (
+                    <>
+                        <li className={`hover:bg-green-900 text-white font-semibold rounded-xs ${url.startsWith('/dashboard') ? 'bg-green-800' : ''}`}>
+                            <Link href={dashboard()} className='cursor-pointer inline-block px-2 py-1.5'>Dashboard</Link>
+                        </li>
+                    </>
+                )}
             </ul>
         </nav>
     )
