@@ -137,5 +137,15 @@
 
     body {
         @apply bg-background text-foreground;
+        @apply h-dvh;
     }
+}
+
+div#app{
+/* min-height: 100%; */
+height: auto;
+min-height: 100%;
+display: flex;
+flex-direction: column;
+justify-content:space-between
 }
